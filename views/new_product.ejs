@@ -1,0 +1,39 @@
+<%- include("partials/header") %>
+<section class="main" role="main">
+  <h1>Products Page</h1>
+
+  <div class="container">
+    <h3 class="title">Add new item</h3>
+      <form action="/new_product" method="post" class="form-control">
+        <div class="row">
+          <div class="col-md-6">
+            <label for="Name">
+              <input type="text" name="title" placeholder="Title" />
+            </label>
+          </div>
+
+          <div class="col-md-6">
+            <label for="Model">
+              <input type="text" name="model" placeholder="Model" />
+            </label>
+          </div>
+
+          <div class="col-md-6">
+            <label for="Price">
+              <input type="text" name="price" placeholder="Price" />
+            </label>
+          </div>
+
+          <div class="col-md-6">
+            <label for="Image">
+              <input type="text" name="image" placeholder="Choose Image" />
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Add new item</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<%- include("partials/footer"); %>

@@ -1,0 +1,19 @@
+<%- include("partials/header") %>
+<section class="main" role="main">
+  <h1>Products Page</h1>
+
+  <div class="container">
+    <h3 class="title">Let's shop</h3>
+    <% products.forEach((item) => { %>
+    <div class="card bg-dark text-light p-3 m-3">
+      <img class="card-img" src="<%= item.img_src %>" alt="Image" />
+      <span class="=card-title">Name: <%= item.title %></span>
+      <span class="=card-description">Model: <%= item.model %></span>
+      <span class="=card-description">Price: <%= item.price %></span>
+    </div>
+    <% } )%>
+
+    <a href="/product/new">New Product</a>
+  </div>
+</section>
+<%- include("partials/footer"); %>
