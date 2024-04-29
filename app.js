@@ -1,6 +1,11 @@
 const express = require("express");
 const app = express();
 const parser = require("body-parser");
+const mongoose = require("mongoose");
+const config = require("./config");
+const Product = require("./models/product");
+
+mongoose.connect(config.db.connection);
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
@@ -49,10 +54,20 @@ app.get("/products", (req, res) => {
   res.render("products", { products });
 });
 
-app.post("/new_product", (req, res) => {
-  const data = req.body;
-  products.push(data);
-  res.redirect("products");
+app.post("/products", (req, res) => {
+  const newProduct = { ...req.body };
+
+  Product.create(newProduct)
+    .then((product) => {
+      console.log(product);
+      res.redirect("/products");
+    })
+    .catch((err) => {
+      console.log("Error: ", err);
+      res.redirect("/products");
+    });
+
+  res.redirect("/products");
 });
 
 app.get("/product/new", (req, res) => {
